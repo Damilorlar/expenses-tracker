@@ -202,6 +202,28 @@ label{
     color: #4a5568;
     font-weight: 500;
 }
+/* Style for the transaction type select */
+select#type {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    border: 2px solid #e2e8f0;
+    font-size: 1rem;
+    background-color: white;
+    border-radius: 0.3rem;
+    transition: all 0.2s ease;
+  color: #4a5568;
+    margin-bottom: 0.5rem;
+}
+
+select#type:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+select#type:hover {
+    border-color: #cbd5e0;
+}
 input{
     width: 100%;
     padding: 0.5rem 0.8rem;

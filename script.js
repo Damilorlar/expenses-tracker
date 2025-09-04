@@ -5,33 +5,52 @@ const transactionlistEl= document.getElementById("transaction-list")
 const transactionFormEl= document.getElementById("transaction-form")
 const descriptionEl= document.getElementById("description")
 const amountEl= document.getElementById("amount")
+const typeEl = document.getElementById("type");
 
 
 
 let transactions =JSON.parse(localStorage.getItem("transactions")) || [];
 
 transactionFormEl.addEventListener("submit", addTransactions)
-
 function addTransactions(e){
     e.preventDefault();
-
     const description = descriptionEl.value.trim();
-    const amount = parseFloat(amountEl.value)
+    const amount = parseFloat(amountEl.value);
+    const type = typeEl.value;
+    if (description && !isNaN(amount)) {
+        const transaction = {
+            id: Date.now(),
+            description,
+            amount: type === "expense" ? -Math.abs(amount) : Math.abs(amount)
+        };
+        transactions.push(transaction);
+        localStorage.setItem("transactions", JSON.stringify(transactions));
+        updateTransactionList();
+        updateSummary();
+    }
+    transactionFormEl.reset();
+}
 
-    transactions.push({
-        id:Date.now(),
-        description,
-        amount
-    })
+// function addTransactions(e){
+//     e.preventDefault();
+
+//     const description = descriptionEl.value.trim();
+//     const amount = parseFloat(amountEl.value)
+
+//     transactions.push({
+//         id:Date.now(),
+//         description,
+//         amount
+//     })
      
  
 
-    localStorage.setItem("transactions", JSON.stringify(transactions));
+//     localStorage.setItem("transactions", JSON.stringify(transactions));
 
-    updateTransactionList();
-    updateSummary();
-    transactionFormEl.reset()
-}
+//     updateTransactionList();
+//     updateSummary();
+//     transactionFormEl.reset()
+// }
 function updateTransactionList(){
     transactionlistEl.innerHTML=""
 
@@ -51,7 +70,7 @@ function createTransactionElement(transaction){
     li.innerHTML=`
             <span>${transaction.description}</span>
             <span>
-            ${formatCurrency(transaction.amount)}
+            ${formatCurrency(transaction.amount > 0 ? transaction.amount : Math.abs(transaction.amount))}
            <button class="delete-btn" onclick="removeTransaction(${transaction.id})">x</button>
             </span>
             `;
@@ -72,7 +91,7 @@ function updateSummary(){
 
     balanceEl.textContent =formatCurrency(balance);
     incomeAmountEl.textContent =formatCurrency(income);
-    expensesAmountEl.textContent =formatCurrency(expenses);
+expensesAmountEl.textContent = formatCurrency(Math.abs(expenses));
 }
 
 function formatCurrency(number){
