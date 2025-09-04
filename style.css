@@ -1,0 +1,307 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: linear-gradient(135deg,#2e8b57, #a8d5ba );
+    min-height: 100vh;
+    color: #2d3436;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    font-family: "poppins" sans-serif;
+}
+
+.container{
+    background-color: white;
+    border-radius: 1.5rem;
+    width: 100%;
+    max-width: 900px;
+    padding: 2rem;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+h1{
+    text-align: center;
+    color: #1a202c;
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: -0.5px ;
+    margin-bottom: 1rem;
+}
+h2{
+    color: #2d3748;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  
+}
+.balance-container{
+    text-align: center;
+    background: linear-gradient(135deg, #a8d5ba, #6b8e23);
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.balance-container h1{
+  margin: 20px 0px;
+  font-size: 3rem;
+  letter-spacing: 1px;
+}
+.summary{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+.income,.expenses{
+    background-color: white;
+    border-radius: 0.7rem;
+    padding: 1.5rem;
+    transition: transform 0.2s ease;
+}
+.income h3{
+    color:#059669 ;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.expenses h3{
+    color: #dc2626;
+     font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.income p{
+    color: #059669;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+.expenses p{
+    color: #dc2626;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+.income:hover,.expenses:hover{
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+.main-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+.transaction-container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#transaction-list{
+    height: 100%;
+    list-style: none;
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    flex-grow: 1;
+
+}
+
+#transaction-list::-webkit-scrollbar{
+    width: 8px;
+}
+#transaction-list::-webkit-scrollbar-track{
+    background-color:#f1f1f1;
+    border-radius: 4px;
+}
+#transaction-list::-webkit-scrollbar-thumb{
+    background-color:#cbd5e0 ;
+     border-radius: 4px;
+
+}
+#transaction-list::-webkit-scrollbar-thumb:hover{
+    background-color:#a0aec0 ;
+}
+.transaction{
+    display:flex ;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    margin-bottom: 0.8rem;
+    padding: 0.6rem 1.2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    border-radius: 12px;
+    border-right: 5px solid ;
+    transition: all 0.3s ease;
+    animation: slideIn 0.3s;
+}
+@keyframes slideIn {
+    from{
+        opacity: 0;
+        transform: translateX(-20px);
+
+    }
+    to{
+       opacity: 1;
+        transform: translateX(0px);
+    }
+    
+}
+
+.transactions:hover{
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+}
+.transaction.income{
+    border-right-color: #059669;
+}
+.transaction.expenses{
+    border-right-color: #dc2626;
+}
+.transaction .delete-btn{
+    background: none;
+    border: none;
+    color: #dc2626;
+    cursor: pointer;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    padding: 1px 8px;
+    margin-left: 12px;
+}
+.transaction:hover .delete-btn{
+    opacity: 1;
+}
+.transaction .delete-btn:hover{
+    background-color: #fee2e2;
+    transform: scale(1.1);
+}
+.form-container{
+    height: 100%;
+    background: linear-gradient(135deg, #f6f8fb,#f1f4f8 );
+    padding: 1rem;
+    border-radius: 0.7rem;
+    display:flex ;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.form-container form{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+.form-group{
+    margin-bottom: 0.6rem;
+}
+label{
+    display: block;
+    margin-bottom:0.5rem ;
+    color: #4a5568;
+    font-weight: 500;
+}
+input{
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    border: 2px solid #e2e8f0;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    background-color: white;
+    border-radius: 0.3rem;
+}
+input:focus{
+    outline: none;
+    border-color:#667eea ;
+    box-shadow: 0 0 3px rgba(102, 126, 234, 0.1);
+}
+input:hover{
+    border-color:#cbd5e0 ;
+}
+small{
+    font-size: 0.8rem;
+    color: #718096;
+    display: block;
+    margin-top: 4px;
+}
+
+button[type="submit"]{
+    width: 100%;
+    background: linear-gradient(135deg, #2e8b57 0%, #3cb371 100%);
+    margin-top: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    color: white;
+    padding: 0.7rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+button[type="submit"]:hover{
+    transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(102, 126, 234, 0.3);
+}
+button[type="submit"]:active{
+    transform: translateY(0px);
+}
+
+@media (max-width:900px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    #transaction-list {
+        max-height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 0.5rem;
+    }
+    .container {
+        padding: 1rem;
+        border-radius: 0.7rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.10);
+    }
+    h1 {
+        font-size: 1.4rem;
+    }
+    .balance-container {
+        padding: 1rem;
+    }
+    .summary {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .main-content {
+        gap: 1rem;
+    }
+    .income, .expenses {
+        padding: 1rem;
+    }
+    .form-container {
+        padding: 0.5rem;
+    }
+    button[type="submit"] {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.9rem;
+    }
+    #transaction-list {
+        max-height: 120px;
+    }
+    .transactions {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.95rem;
+    }
+    .form-container{
+        margin-top: 1rem;
+    }
+}
+
+
+
+
