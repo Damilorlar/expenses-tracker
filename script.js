@@ -30,27 +30,6 @@ function addTransactions(e){
     }
     transactionFormEl.reset();
 }
-
-// function addTransactions(e){
-//     e.preventDefault();
-
-//     const description = descriptionEl.value.trim();
-//     const amount = parseFloat(amountEl.value)
-
-//     transactions.push({
-//         id:Date.now(),
-//         description,
-//         amount
-//     })
-     
- 
-
-//     localStorage.setItem("transactions", JSON.stringify(transactions));
-
-//     updateTransactionList();
-//     updateSummary();
-//     transactionFormEl.reset()
-// }
 function updateTransactionList(){
     transactionlistEl.innerHTML=""
 
@@ -102,7 +81,7 @@ function formatCurrency(number){
 }
 
 function removeTransaction(id){
-    transactions = transactions.filter(transaction => transaction.id !== id)
+    transactions = transactions.filter(t => t.id !== id)
 
     localStorage.setItem("transactions", JSON.stringify(transactions))
 

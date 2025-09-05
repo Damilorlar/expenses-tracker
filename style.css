@@ -149,7 +149,7 @@ h2{
     
 }
 
-.transactions:hover{
+.transaction:hover{
     transform: translateX(4px);
     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
 }
@@ -167,7 +167,6 @@ h2{
     font-size: 1.2rem;
     opacity: 0;
     transition: all 0.3s ease;
-    border-radius: 4px;
     padding: 1px 8px;
     margin-left: 12px;
 }
@@ -176,6 +175,7 @@ h2{
 }
 .transaction .delete-btn:hover{
     background-color: #fee2e2;
+     border-radius: 4px;
     transform: scale(1.1);
 }
 .form-container{
